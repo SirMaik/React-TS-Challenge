@@ -10,50 +10,54 @@
 
 To fire up the project run `npm install` and then `npm run start` in the root directory
 
-
 ### Requirements and expectations:
+
 [DELETE NON-APPLICABLE]
+
 #### Junior Developer
-  - Create at least two separate pages:
-    - Home page with ~10 items displayed
-    - Individual page to show info on each item, accessed by clicking on an item on the home page
-  - Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
-  - Integrate with one of the APIs listed below to retrieve data using a GET request (any method of implementation is allowed)
-    - https://openwhyd.github.io/openwhyd/API
-    - https://www.tvmaze.com/api
-    - https://elephant-api.herokuapp.com/
-  - Push to a repo on github/gitlab with properly labelled commits
-  - ##### Bonus marks (if you're familiar with TypeScript)
-    - Create re-usable types and interfaces and import as appropriate
+
+- Create at least two separate pages:
+  - Home page with ~10 items displayed
+  - Individual page to show info on each item, accessed by clicking on an item on the home page
+- Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
+- Integrate with one of the APIs listed below to retrieve data using a GET request (any method of implementation is allowed)
+  - https://openwhyd.github.io/openwhyd/API
+  - https://www.tvmaze.com/api
+  - https://elephant-api.herokuapp.com/
+- Push to a repo on github/gitlab with properly labelled commits
+- ##### Bonus marks (if you're familiar with TypeScript)
+  - Create re-usable types and interfaces and import as appropriate
 
 #### Mid-Weight Developer
-  - Create at least two separate pages:
-    - Home page with ~10 items displayed
-    - Individual page to show info on each item, accessed by clicking on an item on the home page
-  - Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
-  - Integrate with one of the APIs listed below to retrieve data using an authenticated GET request (any method of implementation is allowed)
-    - https://developers.themoviedb.org/3/getting-started/authentication
-    - https://developer.spotify.com/documentation/web-api/
-    - https://developers.gettyimages.com/docs/
-  - Include a search component using queries to filter results
-  - Create re-usable types and interfaces and import as appropriate
-  - Apply atomic design priniciples to the app structure
-  - Setup linting config and apply to your repo
-  - Push to a repo on github/gitlab with properly labelled commits
 
-  #### Senior Developer
-  - Create at least two separate pages:
-    - Home page with ~10 items displayed
-    - Individual page to show info on each item, accessed by clicking on an item on the home page
-  - Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
-  - Integrate with one of the APIs listed below to retrieve data using an authenticated GET request (any method of implementation is allowed)
-    - https://developers.themoviedb.org/3/getting-started/authentication
-    - https://developer.spotify.com/documentation/web-api/
-    - https://developers.gettyimages.com/docs/
-  - Include a search component using queries to filter results
-  - Create re-usable types and interfaces and import as appropriate
-  - Apply atomic design priniciples to the app structure
-  - Setup linting config and apply to your repo
-  - Implement performant code and comment to show where you have made improvements or tested your output
-  - Keep the size of your built repo as small as possible
-  - Push to a repo on github/gitlab with properly labelled commits
+- Create at least two separate pages:
+  - Home page with ~10 items displayed
+  - Individual page to show info on each item, accessed by clicking on an item on the home page
+- Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
+- Integrate with one of the APIs listed below to retrieve data using an authenticated GET request (any method of implementation is allowed)
+  - https://developers.themoviedb.org/3/getting-started/authentication
+  - https://developer.spotify.com/documentation/web-api/
+  - https://developers.gettyimages.com/docs/
+- Include a search component using queries to filter results
+- Create re-usable types and interfaces and import as appropriate
+- Apply atomic design priniciples to the app structure
+- Setup linting config and apply to your repo
+- Push to a repo on github/gitlab with properly labelled commits
+
+#### Senior Developer
+
+- Create at least two separate pages:
+  - Home page with ~10 items displayed
+  - Individual page to show info on each item, accessed by clicking on an item on the home page
+- Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
+- Integrate with one of the APIs listed below to retrieve data using an authenticated GET request (any method of implementation is allowed)
+  - https://developers.themoviedb.org/3/getting-started/authentication
+  - https://developer.spotify.com/documentation/web-api/
+  - https://developers.gettyimages.com/docs/
+- Include a search component using queries to filter results
+- Create re-usable types and interfaces and import as appropriate
+- Apply atomic design priniciples to the app structure
+- Setup linting config and apply to your repo
+- Implement performant code and comment to show where you have made improvements or tested your output
+- Keep the size of your built repo as small as possible
+- Push to a repo on github/gitlab with properly labelled commits
