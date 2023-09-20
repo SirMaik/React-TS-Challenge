@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../components/Card";
 import dummyData from "../dummyData.json"; // To be replaced with your api response data
 
-export const Home = () => {
+export const Home = (): JSX.Element => {
   return (
     <>
       <h1>Space X Ships</h1>
@@ -18,7 +18,7 @@ export const Home = () => {
         <Card
           image={dummyData.image}
           name={dummyData.name}
-          home_port={dummyData.home_port}
+          homePort={dummyData.home_port}
           roles={dummyData.roles}
         />
       </div>

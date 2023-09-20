@@ -9,7 +9,7 @@ import "./global.css";
  */
 
 class App extends Component {
-  render() {
+  render(): JSX.Element {
     return (
       <>
         <BrowserRouter>

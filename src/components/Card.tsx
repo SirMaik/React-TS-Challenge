@@ -3,7 +3,7 @@ import React from "react";
 interface CardProps {
   image: any;
   name: any;
-  home_port: any;
+  homePort: any;
   roles: any;
 }
 
@@ -15,8 +15,8 @@ interface CardProps {
  * @returns
  *
  */
-const Card = (props: CardProps) => {
-  const { image, name, home_port, roles } = props;
+const Card = (props: CardProps): JSX.Element => {
+  const { image, name, homePort, roles } = props;
   return (
     <div
       style={{
@@ -40,7 +40,7 @@ const Card = (props: CardProps) => {
         }}
       ></div>
       <h1>{name}</h1>
-      <h2>{home_port}</h2>
+      <h2>{homePort}</h2>
       <ul>
         {roles.map((role: any) => (
           <li key={role}>{role}</li>
