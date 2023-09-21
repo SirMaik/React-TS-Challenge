@@ -1,10 +1,10 @@
 import type { Headers, Params } from "./type";
 
-async function http<T>(
+async function http(
   url: string,
   params?: Params,
   init?: RequestInit
-): Promise<T> {
+): Promise<Response> {
   url = appendParams(url, params);
 
   const request = new Request(url, init);
@@ -14,7 +14,7 @@ async function http<T>(
     throw new Error(`Error: ${response.status}: ${response.statusText}`);
   }
 
-  return await response.json();
+  return response;
 }
 
 function appendParams(path: string, params?: Params): string {
@@ -25,31 +25,11 @@ function appendParams(path: string, params?: Params): string {
   return `${path}?${new URLSearchParams(params).toString()}`;
 }
 
-export async function get<T>(
+export async function get(
   url: string,
   params?: Params,
   headers?: Headers
-): Promise<T> {
+): Promise<Response> {
   const init = { method: "GET", headers };
-  return await http<T>(url, params, init);
-}
-
-export async function post<T, U>(
-  url: string,
-  body: U,
-  params?: Params,
-  headers?: Headers
-): Promise<T> {
-  const init = { method: "POST", headers, body: JSON.stringify(body) };
-  return await http<T>(url, params, init);
-}
-
-export async function patch<T, U>(
-  url: string,
-  body: U,
-  params?: Params,
-  headers?: Headers
-): Promise<T> {
-  const init = { method: "PATCH", headers, body: JSON.stringify(body) };
-  return await http<T>(url, params, init);
+  return await http(url, params, init);
 }
