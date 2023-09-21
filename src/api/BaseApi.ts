@@ -1,5 +1,4 @@
-export type Headers = Record<string, string>;
-export type Params = Record<string, string>;
+import type { Headers, Params } from "./type";
 
 async function http<T>(
   path: string,
