@@ -13,7 +13,6 @@ interface MovieProps extends Movie {}
  *
  */
 const Card = (props: MovieProps): JSX.Element => {
-  console.log(props);
   const { title, posterPath, originalLanguage, voteAverage } = props;
 
   return (
@@ -41,10 +40,10 @@ const Card = (props: MovieProps): JSX.Element => {
       <h2>{title}</h2>
       <ol className="card-list">
         <li>
-          Original language: <span>{originalLanguage}</span>
+          Original language: <span>{originalLanguage ?? "not found"}</span>
         </li>
         <li>
-          Vote average: <span>{voteAverage}</span>
+          Vote average: <span>{voteAverage ?? "not found"}</span>
         </li>
       </ol>
     </div>

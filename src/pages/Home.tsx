@@ -1,38 +1,51 @@
 import React from "react";
 import Card from "../components/Card";
-import * as API from "../api/Movie/MovieApi";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery
-} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import SearchBar from "../components/SearchBar";
+import { search } from "../api/Movie/MovieApi";
 
 export const Home = (): JSX.Element => {
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["movieSearch"],
-    queryFn: () => API.search("amores", true, 2)
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const includeAdult = false;
+  const page = 1;
+
+  const { data, status, fetchStatus, error } = useQuery({
+    queryKey: ["movieSearch", searchTerm, includeAdult, page],
+    queryFn: () => search(searchTerm, includeAdult, page),
+    enabled: searchTerm !== ""
   });
-  console.log(data);
-  if (isLoading) {
-    console.log("loading");
-    return <p>Loading...</p>;
-  }
 
-  if (error) {
-    console.log("error");
-    throw new Error();
-  }
+  const movies = data?.movies ?? [];
+  const renderByStatus = (): JSX.Element => {
+    if (status === "success") {
+      return (
+        <>
+          {movies.map((movie) => (
+            <Card key={movie.id} {...movie} />
+          ))}
+        </>
+      );
+    }
 
-  if (data === undefined) {
-    console.log("undefined");
-    throw new Error();
-  }
+    if (status === "error") {
+      return <div>{error}</div>;
+    }
 
-  const items = data.movies;
+    if (fetchStatus === "idle") {
+      return <div />;
+    }
+
+    if (status === "loading") {
+      return <div>Loading ...</div>;
+    }
+
+    return <div />;
+  };
 
   return (
     <>
       <h1>Movies</h1>
+      <SearchBar setSearchTerm={setSearchTerm} />
       <div
         className="App"
         style={{
@@ -42,9 +55,7 @@ export const Home = (): JSX.Element => {
           columnGap: "20px"
         }}
       >
-        {items.map((item) => (
-          <Card key={item.id} {...item} />
-        ))}
+        {renderByStatus()}
       </div>
     </>
   );
