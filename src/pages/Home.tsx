@@ -45,7 +45,7 @@ export const Home = (): JSX.Element => {
   return (
     <>
       <h1>Movies</h1>
-      <SearchBar setSearchTerm={setSearchTerm} />
+      <SearchBar setSearchTerm={setSearchTerm} placeHolder="Search movies" />
       <div
         className="App"
         style={{

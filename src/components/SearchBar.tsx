@@ -1,6 +1,7 @@
 import React from "react";
 
 interface SearchProps {
+  placeHolder: string;
   setSearchTerm: (searchTerm: string) => void;
 }
 
@@ -22,7 +23,7 @@ const SearchBar = (props: SearchProps): JSX.Element => {
       <input
         type="text"
         id="header-search"
-        placeholder="Search movies"
+        placeholder={props.placeHolder}
         value={searchTerm}
         onChange={handleChange}
       />
