@@ -3,15 +3,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import "./global.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 /**
  * The starting page for your App
  */
 
+const queryClient = new QueryClient({});
+
 class App extends Component {
   render(): JSX.Element {
     return (
-      <>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Header />
           <main>
@@ -22,7 +25,7 @@ class App extends Component {
             </section>
           </main>
         </BrowserRouter>
-      </>
+      </QueryClientProvider>
     );
   }
 }
