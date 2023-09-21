@@ -1,13 +1,13 @@
 import type { Headers, Params } from "./type";
 
 async function http<T>(
-  path: string,
+  url: string,
   params?: Params,
   init?: RequestInit
 ): Promise<T> {
-  path = appendParams(path, params);
+  url = appendParams(url, params);
 
-  const request = new Request(path, init);
+  const request = new Request(url, init);
   const response = await fetch(request);
 
   if (!response.ok) {
@@ -26,30 +26,30 @@ function appendParams(path: string, params?: Params): string {
 }
 
 export async function get<T>(
-  path: string,
+  url: string,
   params?: Params,
   headers?: Headers
 ): Promise<T> {
   const init = { method: "GET", headers };
-  return await http<T>(path, params, init);
+  return await http<T>(url, params, init);
 }
 
 export async function post<T, U>(
-  path: string,
+  url: string,
   body: U,
   params?: Params,
   headers?: Headers
 ): Promise<T> {
   const init = { method: "POST", headers, body: JSON.stringify(body) };
-  return await http<T>(path, params, init);
+  return await http<T>(url, params, init);
 }
 
 export async function patch<T, U>(
-  path: string,
+  url: string,
   body: U,
   params?: Params,
   headers?: Headers
 ): Promise<T> {
   const init = { method: "PATCH", headers, body: JSON.stringify(body) };
-  return await http<T>(path, params, init);
+  return await http<T>(url, params, init);
 }
