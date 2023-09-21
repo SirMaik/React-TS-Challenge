@@ -1,11 +1,8 @@
 import React from "react";
+import type { Movie } from "../api/Movie/interface";
+import posterNotFound from "../assets/posterNotFound.png";
 
-interface CardProps {
-  image: any;
-  name: any;
-  homePort: any;
-  roles: any;
-}
+interface MovieProps extends Movie {}
 
 /**
  * This should be a React component that, at the very least, comprises an image component a title and a description or subheading.
@@ -15,8 +12,10 @@ interface CardProps {
  * @returns
  *
  */
-const Card = (props: CardProps): JSX.Element => {
-  const { image, name, homePort, roles } = props;
+const Card = (props: MovieProps): JSX.Element => {
+  console.log(props);
+  const { title, posterPath, originalLanguage, voteAverage } = props;
+
   return (
     <div
       style={{
@@ -27,25 +26,27 @@ const Card = (props: CardProps): JSX.Element => {
         padding: "15px",
         color: "#333",
         border: "solid 1px #333",
-        borderRadius: "5px",
+        borderRadius: "5px"
       }}
     >
       <div
         style={{
           width: "90%",
           height: "200px",
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${posterPath ?? posterNotFound})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center"
         }}
       ></div>
-      <h1>{name}</h1>
-      <h2>{homePort}</h2>
-      <ul>
-        {roles.map((role: any) => (
-          <li key={role}>{role}</li>
-        ))}
-      </ul>
+      <h2>{title}</h2>
+      <ol className="card-list">
+        <li>
+          Original language: <span>{originalLanguage}</span>
+        </li>
+        <li>
+          Vote average: <span>{voteAverage}</span>
+        </li>
+      </ol>
     </div>
   );
 };
