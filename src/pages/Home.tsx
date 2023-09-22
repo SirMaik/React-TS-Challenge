@@ -3,10 +3,16 @@ import Card from "../components/Card";
 import { useQuery } from "@tanstack/react-query";
 import SearchBar from "../components/SearchBar";
 import { search } from "../api/Movie/MovieApi";
+import { Checkbox } from "../components/Checkbox";
 
 export const Home = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = React.useState("");
-  const includeAdult = false;
+  const includeAdultRef = React.useRef(false);
+  const setIncludeAdult = (value: boolean): void => {
+    includeAdultRef.current = value;
+  };
+  const includeAdult = includeAdultRef.current;
+
   const page = 1;
 
   const { data, status, fetchStatus, error } = useQuery({
@@ -46,6 +52,11 @@ export const Home = (): JSX.Element => {
     <>
       <h1>Movies</h1>
       <SearchBar setSearchTerm={setSearchTerm} placeHolder="Search movies" />
+      <Checkbox
+        label="Adult films"
+        value={includeAdult}
+        setValue={setIncludeAdult}
+      />
       <div
         className="App"
         style={{
