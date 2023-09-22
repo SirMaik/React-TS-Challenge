@@ -1,33 +1,26 @@
 import React from "react";
 
-interface SearchProps {
+interface SearchBarProps {
   placeHolder: string;
-  handleSearchTermChange: (searchTerm: string) => void;
+  searchTerm: string;
+  setSearchTerm: (searchTerm: string) => void;
 }
 
-const SearchBar = (props: SearchProps): JSX.Element => {
-  const handleParentSearchTermChange = props.handleSearchTermChange;
-  const [searchTerm, setSearchTerm] = React.useState("");
-
-  const handleChange = (event: any): void => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleSubmit = (e: any): void => {
-    e.preventDefault();
-    handleParentSearchTermChange(searchTerm);
-  };
-
+const SearchBar = ({
+  placeHolder,
+  searchTerm,
+  setSearchTerm
+}: SearchBarProps): JSX.Element => {
   return (
-    <form action="/" method="get" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        id="header-search"
-        placeholder={props.placeHolder}
-        value={searchTerm}
-        onChange={handleChange}
-      />
-    </form>
+    <input
+      type="text"
+      id="header-search"
+      placeholder={placeHolder}
+      value={searchTerm}
+      onChange={(e) => {
+        setSearchTerm(e.target.value);
+      }}
+    />
   );
 };
 

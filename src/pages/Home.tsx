@@ -1,98 +1,43 @@
-import React from "react";
-import Card from "../components/Card";
-import { useQuery } from "@tanstack/react-query";
-import SearchBar from "../components/SearchBar";
-import { search } from "../api/Movie/MovieApi";
+import React, { useRef } from "react";
 import { Checkbox } from "../components/Checkbox";
-import ReactPaginate from "react-paginate";
+import SearchBar from "../components/SearchBar";
+import { MovieDisplayer } from "../components/MovieDisplayer";
 
 export const Home = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = React.useState("");
-  const includeAdultRef = React.useRef(false);
-  const setIncludeAdult = (value: boolean): void => {
-    includeAdultRef.current = value;
-  };
-  const includeAdult = includeAdultRef.current;
-
-  const [page, setPage] = React.useState(0);
-
-  const { data, status, fetchStatus, error } = useQuery({
-    queryKey: ["movieSearch", searchTerm, includeAdult, page],
-    queryFn: () => search(searchTerm, includeAdult, page + 1),
-    enabled: searchTerm !== "",
-    notifyOnChangeProps: ["data"]
+  const [includeAdult, setIncludeAdult] = React.useState(false);
+  const [queryState, setQueryState] = React.useState({
+    searchTerm: searchTerm,
+    includeAdult: includeAdult
   });
 
-  const pages = data?.pages ?? 0;
-
-  const movies = data?.movies ?? [];
-  const renderByStatus = (): JSX.Element => {
-    if (status === "success") {
-      return (
-        <>
-          {movies.map((movie) => (
-            <Card key={movie.id} {...movie} />
-          ))}
-        </>
-      );
-    }
-
-    if (status === "error") {
-      return <div>{error}</div>;
-    }
-
-    if (fetchStatus === "idle") {
-      return <div />;
-    }
-
-    if (status === "loading") {
-      return <div>Loading ...</div>;
-    }
-
-    return <div />;
-  };
-
-  const handleSearchTermChange = (searchTerm: string): void => {
-    setSearchTerm(searchTerm);
-    setPage(0);
+  const handleSubmit = (e: React.FormEvent): void => {
+    setQueryState({
+      searchTerm: searchTerm,
+      includeAdult: includeAdult
+    });
+    e.preventDefault();
   };
 
   return (
     <>
       <h1>Movies</h1>
-      <SearchBar
-        handleSearchTermChange={handleSearchTermChange}
-        placeHolder="Search movies"
+      <form action="/" method="get" onSubmit={handleSubmit}>
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          placeHolder="Search movies"
+        />
+        <Checkbox
+          label="Adult films"
+          isChecked={includeAdult}
+          setCheck={setIncludeAdult}
+        />
+      </form>
+      <MovieDisplayer
+        searchTerm={queryState.searchTerm}
+        includeAdult={queryState.includeAdult}
       />
-      <Checkbox
-        label="Adult films"
-        value={includeAdult}
-        setValue={setIncludeAdult}
-      />
-      <div
-        className="App"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-          rowGap: "20px",
-          columnGap: "20px"
-        }}
-      >
-        {renderByStatus()}
-        <div>
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={(e) => {
-              setPage(e.selected);
-            }}
-            pageRangeDisplayed={5}
-            pageCount={pages}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-          />
-        </div>
-      </div>
     </>
   );
 };
