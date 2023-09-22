@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import SearchBar from "../components/SearchBar";
 import { search } from "../api/Movie/MovieApi";
 import { Checkbox } from "../components/Checkbox";
+import ReactPaginate from "react-paginate";
 
 export const Home = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -13,13 +14,15 @@ export const Home = (): JSX.Element => {
   };
   const includeAdult = includeAdultRef.current;
 
-  const page = 1;
+  const [page, setPage] = React.useState(0);
 
   const { data, status, fetchStatus, error } = useQuery({
     queryKey: ["movieSearch", searchTerm, includeAdult, page],
-    queryFn: () => search(searchTerm, includeAdult, page),
+    queryFn: () => search(searchTerm, includeAdult, page + 1),
     enabled: searchTerm !== ""
   });
+
+  const pages = data?.pages ?? 0;
 
   const movies = data?.movies ?? [];
   const renderByStatus = (): JSX.Element => {
@@ -29,6 +32,19 @@ export const Home = (): JSX.Element => {
           {movies.map((movie) => (
             <Card key={movie.id} {...movie} />
           ))}
+          <div>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="next >"
+              onPageChange={(e) => {
+                setPage(e.selected);
+              }}
+              pageRangeDisplayed={5}
+              pageCount={pages}
+              previousLabel="< previous"
+              renderOnZeroPageCount={null}
+            />
+          </div>
         </>
       );
     }
