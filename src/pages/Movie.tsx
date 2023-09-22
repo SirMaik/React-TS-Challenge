@@ -31,20 +31,41 @@ export const Movie = (props: any): JSX.Element => {
   if (status === "success") {
     return (
       <>
-        <div className="container">
+        <div
+          style={{
+            display: "flex",
+            height: "400px",
+            padding: "30px"
+          }}
+        >
           <div
             style={{
-              alignContent: "left",
+              flex: "1",
               width: "30%",
-              height: "100px",
+              height: "100%",
               backgroundImage: `url(${movie.posterPath ?? posterNotFound})`,
               backgroundSize: "cover",
               backgroundPosition: "center"
             }}
           ></div>
-          <div className="side side-content-center">
+          <div
+            style={{
+              width: "70%",
+              display: "flex",
+              paddingLeft: "30px",
+              verticalAlign: "top"
+            }}
+          >
             <div>
-              <p>{movie.description}</p>
+              <h1>{movie.title}</h1>
+              {movie.description ?? <p>{movie.description}</p>}
+              <p>
+                Original language:{" "}
+                <span>{movie.originalLanguage ?? "not available"}</span>
+              </p>
+              <p>
+                Vote average: <span>{movie.voteAverage ?? "not found"}</span>
+              </p>
             </div>
           </div>
         </div>
