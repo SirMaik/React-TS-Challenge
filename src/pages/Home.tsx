@@ -52,10 +52,18 @@ export const Home = (): JSX.Element => {
     return <div />;
   };
 
+  const handleSearchTermChange = (searchTerm: string): void => {
+    setSearchTerm(searchTerm);
+    setPage(0);
+  };
+
   return (
     <>
       <h1>Movies</h1>
-      <SearchBar setSearchTerm={setSearchTerm} placeHolder="Search movies" />
+      <SearchBar
+        handleSearchTermChange={handleSearchTermChange}
+        placeHolder="Search movies"
+      />
       <Checkbox
         label="Adult films"
         value={includeAdult}

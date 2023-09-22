@@ -2,11 +2,11 @@ import React from "react";
 
 interface SearchProps {
   placeHolder: string;
-  setSearchTerm: (searchTerm: string) => void;
+  handleSearchTermChange: (searchTerm: string) => void;
 }
 
 const SearchBar = (props: SearchProps): JSX.Element => {
-  const setParentSearchTerm = props.setSearchTerm;
+  const handleParentSearchTermChange = props.handleSearchTermChange;
   const [searchTerm, setSearchTerm] = React.useState("");
 
   const handleChange = (event: any): void => {
@@ -15,7 +15,7 @@ const SearchBar = (props: SearchProps): JSX.Element => {
 
   const handleSubmit = (e: any): void => {
     e.preventDefault();
-    setParentSearchTerm(searchTerm);
+    handleParentSearchTermChange(searchTerm);
   };
 
   return (
