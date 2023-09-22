@@ -33,19 +33,6 @@ export const Home = (): JSX.Element => {
           {movies.map((movie) => (
             <Card key={movie.id} {...movie} />
           ))}
-          <div>
-            <ReactPaginate
-              breakLabel="..."
-              nextLabel="next >"
-              onPageChange={(e) => {
-                setPage(e.selected);
-              }}
-              pageRangeDisplayed={5}
-              pageCount={pages}
-              previousLabel="< previous"
-              renderOnZeroPageCount={null}
-            />
-          </div>
         </>
       );
     }
@@ -84,6 +71,19 @@ export const Home = (): JSX.Element => {
         }}
       >
         {renderByStatus()}
+        <div>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="next >"
+            onPageChange={(e) => {
+              setPage(e.selected);
+            }}
+            pageRangeDisplayed={5}
+            pageCount={pages}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+          />
+        </div>
       </div>
     </>
   );
