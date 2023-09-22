@@ -19,7 +19,8 @@ export const Home = (): JSX.Element => {
   const { data, status, fetchStatus, error } = useQuery({
     queryKey: ["movieSearch", searchTerm, includeAdult, page],
     queryFn: () => search(searchTerm, includeAdult, page + 1),
-    enabled: searchTerm !== ""
+    enabled: searchTerm !== "",
+    notifyOnChangeProps: ["data"]
   });
 
   const pages = data?.pages ?? 0;
