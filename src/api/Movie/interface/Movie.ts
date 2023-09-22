@@ -4,4 +4,5 @@ export interface Movie {
   posterPath?: string;
   originalLanguage?: string;
   voteAverage?: number;
+  description?: string;
 }

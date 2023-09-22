@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Checkbox } from "../components/Checkbox";
 import SearchBar from "../components/SearchBar";
 import { MovieDisplayer } from "../components/MovieDisplayer";

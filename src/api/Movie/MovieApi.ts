@@ -52,7 +52,8 @@ export async function getMovie(id: number): Promise<Movie> {
       ? `https://image.tmdb.org/t/p/original/${response.poster_path}`
       : undefined,
     originalLanguage: response.original_language,
-    voteAverage: response.vote_average
+    voteAverage: response.vote_average,
+    description: response.overview
   };
 
   return movie;
