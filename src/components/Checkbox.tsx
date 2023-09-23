@@ -1,4 +1,5 @@
 import React from "react";
+import { Checkbox as MantineCheckbox } from "@mantine/core";
 
 interface CheckboxProps {
   label: string;
@@ -12,15 +13,13 @@ export const Checkbox = ({
   setCheck
 }: CheckboxProps): JSX.Element => {
   return (
-    <label>
-      <input
-        type="checkbox"
-        checked={isChecked}
-        onChange={(e) => {
-          setCheck(e.target.checked);
-        }}
-      />
-      {label}
-    </label>
+    <MantineCheckbox
+      type="checkbox"
+      checked={isChecked}
+      label={label}
+      onChange={(e) => {
+        setCheck(e.target.checked);
+      }}
+    />
   );
 };

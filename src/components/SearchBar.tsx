@@ -1,22 +1,24 @@
 import React from "react";
+import { Input } from "@mantine/core";
 
 interface SearchBarProps {
   placeHolder: string;
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void;
+  width: number;
 }
 
 const SearchBar = ({
   placeHolder,
   searchTerm,
-  setSearchTerm
+  setSearchTerm, 
+  width
 }: SearchBarProps): JSX.Element => {
   return (
-    <input
-      type="text"
-      id="header-search"
+    <Input
       placeholder={placeHolder}
       value={searchTerm}
+      w={width}
       onChange={(e) => {
         setSearchTerm(e.target.value);
       }}
