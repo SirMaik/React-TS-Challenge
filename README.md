@@ -11,7 +11,7 @@ npm install
 ```
 
 ## Setup
-Create a **.env** file at the root of the project and add your "The Movie DB" and assign it your API Read Access Token to the **TMDB_TOKEN** variable:
+Create a **.env** file at the root of the project and assign your "The Movie DB" API Read Access Token to the **TMDB_TOKEN** variable:
 
 ```bash
 TMDB_TOKEN="some_dummy_token"
