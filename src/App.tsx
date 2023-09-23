@@ -18,16 +18,16 @@ import "@mantine/core/styles.css";
 const queryClient = new QueryClient({});
 
 const myColor: MantineColorsTuple = [
-  "#eeeefb",
-  "#d9d8f2",
-  "#aeaee7",
-  "#8280dc",
-  "#5d5ad3",
-  "#4642cf",
-  "#3b36cd",
-  "#2d29b5",
-  "#2724a2",
-  "#1e1e8f"
+  "#e1f9ff",
+  "#ccedff",
+  "#9ad7ff",
+  "#64c1ff",
+  "#3baefe",
+  "#20a2fe",
+  "#099cff",
+  "#0088e4",
+  "#0078cd",
+  "#0069b6"
 ];
 
 const theme = createTheme({

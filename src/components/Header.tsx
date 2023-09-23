@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/fxdigitallogo.png";
-import { Button } from "@mantine/core";
+import { Button, useMantineTheme } from "@mantine/core";
 
 export const Header = (): JSX.Element => {
   const navigate = useNavigate();
+  const theme = useMantineTheme();
 
   return (
-    <header>
+    <header style={{ background: theme.colors.myColor[3] }}>
       <nav>
         <img src={logo} alt="logo" />
         <Button
