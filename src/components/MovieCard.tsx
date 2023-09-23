@@ -2,7 +2,7 @@ import React from "react";
 import type { Movie as MovieProp } from "../api/Movie/interface";
 import posterNotFound from "../assets/posterNotFound.png";
 import { Link } from "react-router-dom";
-import { Card, Image, Text, Container } from "@mantine/core";
+import { Card, Image, Text } from "@mantine/core";
 
 /**
  * This should be a React component that, at the very least, comprises an image component a title and a description or subheading.
