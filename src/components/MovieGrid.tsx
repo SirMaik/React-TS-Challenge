@@ -9,7 +9,7 @@ interface MovieGridProps {
 
 export const MovieGrid = ({ movies }: MovieGridProps): JSX.Element => {
   return (
-    <SimpleGrid cols={5}>
+    <SimpleGrid cols={5} pt="20px" pb="20px">
       {movies.map((movie) => (
         <MovieCard key={movie.id} {...movie} />
       ))}
