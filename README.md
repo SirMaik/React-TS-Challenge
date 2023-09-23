@@ -1,63 +1,39 @@
-# Take-home challenge instructions
+# Take-home challenge
 
-### Aim of this challenge:
+A web application to search and display movie information
 
-- Develop a simple web app using [DELETE NON-APPLICABLE] React & TypeScript / React / VanillaJS
-- You have full freedom over the styling of your app and while this is not as important to your overall score as functionality and code conventions we would expect your app to be responsive and follow best CSS practices (e.g. BEM naming conventions)
-- App.tsx currently imports dummy json data - you **MUST** use data returned from an api call in your final submission, rather than this data.
+## Installation
 
-### Running the app
+Use the package manager [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install.
 
-To fire up the project run `npm install` and then `npm run start` in the root directory
+```bash
+npm install
+```
 
-### Requirements and expectations:
+## Setup
+Create a **.env** file at the root of the project and add your "The Movie DB" and assign it your API Read Access Token to the **TMDB_TOKEN** variable:
 
-[DELETE NON-APPLICABLE]
+```bash
+TMDB_TOKEN="some_dummy_token"
+```
 
-#### Junior Developer
+## Usage
 
-- Create at least two separate pages:
-  - Home page with ~10 items displayed
-  - Individual page to show info on each item, accessed by clicking on an item on the home page
-- Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
-- Integrate with one of the APIs listed below to retrieve data using a GET request (any method of implementation is allowed)
-  - https://openwhyd.github.io/openwhyd/API
-  - https://www.tvmaze.com/api
-  - https://elephant-api.herokuapp.com/
-- Push to a repo on github/gitlab with properly labelled commits
-- ##### Bonus marks (if you're familiar with TypeScript)
-  - Create re-usable types and interfaces and import as appropriate
+To execute run:
 
-#### Mid-Weight Developer
+```bash
+npm run start
+```
 
-- Create at least two separate pages:
-  - Home page with ~10 items displayed
-  - Individual page to show info on each item, accessed by clicking on an item on the home page
-- Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
-- Integrate with one of the APIs listed below to retrieve data using an authenticated GET request (any method of implementation is allowed)
-  - https://developers.themoviedb.org/3/getting-started/authentication
-  - https://developer.spotify.com/documentation/web-api/
-  - https://developers.gettyimages.com/docs/
-- Include a search component using queries to filter results
-- Create re-usable types and interfaces and import as appropriate
-- Apply atomic design priniciples to the app structure
-- Setup linting config and apply to your repo
-- Push to a repo on github/gitlab with properly labelled commits
+And then open the loopback address shown in the output in the browser.
+For example, if the output looks like:
+```
 
-#### Senior Developer
+> react-takehome-ts@1.0.0 start
+> webpack serve
 
-- Create at least two separate pages:
-  - Home page with ~10 items displayed
-  - Individual page to show info on each item, accessed by clicking on an item on the home page
-- Use of at least 3 separate front-end components to display data (you may edit and use the existing `Card` component but `App` does not count 😉 )
-- Integrate with one of the APIs listed below to retrieve data using an authenticated GET request (any method of implementation is allowed)
-  - https://developers.themoviedb.org/3/getting-started/authentication
-  - https://developer.spotify.com/documentation/web-api/
-  - https://developers.gettyimages.com/docs/
-- Include a search component using queries to filter results
-- Create re-usable types and interfaces and import as appropriate
-- Apply atomic design priniciples to the app structure
-- Setup linting config and apply to your repo
-- Implement performant code and comment to show where you have made improvements or tested your output
-- Keep the size of your built repo as small as possible
-- Push to a repo on github/gitlab with properly labelled commits
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://localhost:8081/
+...
+```
+Open __http://localhost:8081/__ in your browser
