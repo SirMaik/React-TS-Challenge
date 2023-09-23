@@ -3,7 +3,15 @@ import React from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getMovie } from "../api/Movie/MovieApi";
 import posterNotFound from "../assets/posterNotFound.png";
-import { Container, Image, Stack, Text, Loader, Grid } from "@mantine/core";
+import {
+  Container,
+  Image,
+  Stack,
+  Text,
+  Loader,
+  Grid,
+  Center
+} from "@mantine/core";
 
 export const Movie = (props: any): JSX.Element => {
   const params = useParams();
@@ -76,9 +84,9 @@ export const Movie = (props: any): JSX.Element => {
 
   if (status === "loading") {
     return (
-      <Container>
+      <Center pt="50">
         <Loader color="blue" />
-      </Container>
+      </Center>
     );
   }
 

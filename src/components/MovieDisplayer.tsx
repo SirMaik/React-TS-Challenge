@@ -2,7 +2,7 @@ import React from "react";
 import { MovieGrid } from "./MovieGrid";
 import { useQuery } from "@tanstack/react-query";
 import { search } from "../api/Movie/MovieApi";
-import { Pagination } from "@mantine/core";
+import { Pagination, Center, Container, Loader, Text } from "@mantine/core";
 
 interface MovieDisplayerProps {
   searchTerm: string;
@@ -37,7 +37,13 @@ export const MovieDisplayer = ({
   }
 
   if (status === "error") {
-    return <div>{error}</div>;
+    return (
+      <Container>
+        <Text c="red" fw={700}>
+          {error}
+        </Text>
+      </Container>
+    );
   }
 
   if (fetchStatus === "idle") {
@@ -45,7 +51,11 @@ export const MovieDisplayer = ({
   }
 
   if (status === "loading") {
-    return <div>Loading ...</div>;
+    return (
+      <Center pt="50">
+        <Loader color="blue" />
+      </Center>
+    );
   }
 
   return <div>No results found...</div>;
