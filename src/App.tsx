@@ -10,6 +10,7 @@ import {
   createTheme,
   type MantineColorsTuple
 } from "@mantine/core";
+import "@mantine/core/styles.css";
 
 /**
  * The starting page for your App
