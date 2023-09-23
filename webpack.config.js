@@ -14,7 +14,8 @@ module.exports = {
   devServer: { static: path.join(__dirname, "src") },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "public", "index.html")
+      template: path.join(__dirname, "public", "index.html"),
+      favicon: "./public/favicon.png"
     }),
     new Dotenv()
   ],
