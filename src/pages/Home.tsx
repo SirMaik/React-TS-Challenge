@@ -2,6 +2,8 @@ import React from "react";
 import { Checkbox } from "../components/Checkbox";
 import SearchBar from "../components/SearchBar";
 import { MovieDisplayer } from "../components/MovieDisplayer";
+import { Container } from "@mantine/core";
+
 
 export const Home = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -20,7 +22,7 @@ export const Home = (): JSX.Element => {
   };
 
   return (
-    <>
+    <Container>
       <h1>Movies</h1>
       <form action="/" method="get" onSubmit={handleSubmit}>
         <SearchBar
@@ -38,7 +40,7 @@ export const Home = (): JSX.Element => {
         searchTerm={queryState.searchTerm}
         includeAdult={queryState.includeAdult}
       />
-    </>
+    </Container>
   );
 };
 

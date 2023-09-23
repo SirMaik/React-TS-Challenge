@@ -1,6 +1,7 @@
 import React from "react";
-import Card from "./Card";
+import MovieCard from "./MovieCard";
 import type { Movie } from "../api/Movie/interface";
+import { Grid } from "@mantine/core";
 
 interface MovieGridProps {
   movies: Movie[];
@@ -8,18 +9,12 @@ interface MovieGridProps {
 
 export const MovieGrid = ({ movies }: MovieGridProps): JSX.Element => {
   return (
-    <div
-      className="App"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-        rowGap: "20px",
-        columnGap: "20px"
-      }}
-    >
+    <Grid>
       {movies.map((movie) => (
-        <Card key={movie.id} {...movie} />
+        <Grid.Col key={movie.id} span={5}>
+          <MovieCard key={movie.id} {...movie} />
+        </Grid.Col>
       ))}
-    </div>
+    </Grid>
   );
 };

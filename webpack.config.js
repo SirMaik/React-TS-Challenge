@@ -43,6 +43,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
   },
+  devtool: "inline-source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
   }

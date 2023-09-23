@@ -1,8 +1,8 @@
 import React from "react";
 import { MovieGrid } from "./MovieGrid";
-import ReactPaginate from "react-paginate";
 import { useQuery } from "@tanstack/react-query";
 import { search } from "../api/Movie/MovieApi";
+import { Pagination } from "@mantine/core";
 
 interface MovieDisplayerProps {
   searchTerm: string;
@@ -30,7 +30,7 @@ export const MovieDisplayer = ({
       <>
         <MovieGrid movies={movies} />
         <div>
-          <ReactPaginate
+          {/* <ReactPaginate
             breakLabel="..."
             nextLabel="next >"
             onPageChange={(e) => {
@@ -40,7 +40,8 @@ export const MovieDisplayer = ({
             pageCount={pages}
             previousLabel="< previous"
             renderOnZeroPageCount={null}
-          />
+          /> */}
+          <Pagination value={page} onChange={setPage} total={pages} />;
         </div>
       </>
     );
