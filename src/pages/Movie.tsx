@@ -3,6 +3,7 @@ import React from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getMovie } from "../api/Movie/MovieApi";
 import posterNotFound from "../assets/posterNotFound.png";
+import { Container, Image, Stack, Text, Loader, Grid } from "@mantine/core";
 
 export const Movie = (props: any): JSX.Element => {
   const params = useParams();
@@ -30,51 +31,43 @@ export const Movie = (props: any): JSX.Element => {
 
   if (status === "success") {
     return (
-      <>
-        <div
-          style={{
-            display: "flex",
-            height: "400px",
-            padding: "30px"
-          }}
-        >
-          <div
-            style={{
-              flex: "1",
-              width: "30%",
-              height: "100%",
-              backgroundImage: `url(${movie.posterPath ?? posterNotFound})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center"
-            }}
-          ></div>
-          <div
-            style={{
-              width: "70%",
-              display: "flex",
-              paddingLeft: "30px",
-              verticalAlign: "top"
-            }}
-          >
-            <div>
-              <h1>{movie.title}</h1>
-              {movie.description ?? <p>{movie.description}</p>}
-              <p>
-                Original language:{" "}
-                <span>{movie.originalLanguage ?? "not available"}</span>
-              </p>
-              <p>
-                Vote average: <span>{movie.voteAverage ?? "not found"}</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </>
+      <Grid pt="20px">
+        <Grid.Col span={3}>
+          <Image
+            src={movie.posterPath}
+            radius="lg"
+            fallbackSrc={posterNotFound}
+            w="100%"
+          />
+        </Grid.Col>
+
+        <Grid.Col span="auto">
+          <Stack gap="15px">
+            <Text size="xl" fw={700} td="underline">
+              {movie.title}
+            </Text>
+            <Text>{movie.description ?? <p>{movie.description}</p>}</Text>
+            <Text>
+              Original language:{" "}
+              <span>{movie.originalLanguage ?? "not available"}</span>
+            </Text>
+            <Text>
+              Vote average: <span>{movie.voteAverage ?? "not found"}</span>
+            </Text>
+          </Stack>
+        </Grid.Col>
+      </Grid>
     );
   }
 
   if (status === "error") {
-    return <div>{error}</div>;
+    return (
+      <Container>
+        <Text c="red" fw={700}>
+          {error}
+        </Text>
+      </Container>
+    );
   }
 
   if (fetchStatus === "idle") {
@@ -82,7 +75,11 @@ export const Movie = (props: any): JSX.Element => {
   }
 
   if (status === "loading") {
-    return <div>Loading ...</div>;
+    return (
+      <Container>
+        <Loader color="blue" />
+      </Container>
+    );
   }
 
   return <div>No results found...</div>;
