@@ -17,18 +17,17 @@ const MovieCard = (props: MovieProp): JSX.Element => {
 
   return (
     <Link to={`/movie/${props.id}`} state={props}>
-      <Card shadow="sm" padding="lg" radius="md" withBorder w="100%" h="">
+      <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Card.Section>
           <Image
             src={posterPath ?? posterNotFound}
             radius="md"
             w="90%"
-            mah="100"
-            alt="No way!"
+            alt={title}
           />
         </Card.Section>
 
-        <Text fw={500} size="lg" mt="md">
+        <Text fw={500} size="sm" mt="md" lineClamp={1}>
           {title}
         </Text>
 

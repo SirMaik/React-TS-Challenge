@@ -4,7 +4,6 @@ import SearchBar from "../components/SearchBar";
 import { MovieDisplayer } from "../components/MovieDisplayer";
 import { Container } from "@mantine/core";
 
-
 export const Home = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [includeAdult, setIncludeAdult] = React.useState(false);
@@ -12,13 +11,15 @@ export const Home = (): JSX.Element => {
     searchTerm: searchTerm,
     includeAdult: includeAdult
   });
+  const [page, setPage] = React.useState(0);
 
   const handleSubmit = (e: React.FormEvent): void => {
+    e.preventDefault();
     setQueryState({
       searchTerm: searchTerm,
       includeAdult: includeAdult
     });
-    e.preventDefault();
+    setPage(1);
   };
 
   return (
@@ -39,6 +40,8 @@ export const Home = (): JSX.Element => {
       <MovieDisplayer
         searchTerm={queryState.searchTerm}
         includeAdult={queryState.includeAdult}
+        page={page}
+        setPage={setPage}
       />
     </Container>
   );

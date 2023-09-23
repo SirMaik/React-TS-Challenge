@@ -7,17 +7,19 @@ import { Pagination } from "@mantine/core";
 interface MovieDisplayerProps {
   searchTerm: string;
   includeAdult: boolean;
+  page: number;
+  setPage: (page: number) => void;
 }
 
 export const MovieDisplayer = ({
   searchTerm,
-  includeAdult
+  includeAdult,
+  page,
+  setPage
 }: MovieDisplayerProps): JSX.Element => {
-  const [page, setPage] = React.useState(0);
-
   const { data, status, fetchStatus, error } = useQuery({
     queryKey: ["movieSearch", searchTerm, includeAdult, page],
-    queryFn: () => search(searchTerm, includeAdult, page + 1),
+    queryFn: () => search(searchTerm, includeAdult, page),
     enabled: searchTerm !== "",
     notifyOnChangeProps: ["data"]
   });
@@ -29,20 +31,7 @@ export const MovieDisplayer = ({
     return (
       <>
         <MovieGrid movies={movies} />
-        <div>
-          {/* <ReactPaginate
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={(e) => {
-              setPage(e.selected);
-            }}
-            pageRangeDisplayed={5}
-            pageCount={pages}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-          /> */}
-          <Pagination value={page} onChange={setPage} total={pages} />;
-        </div>
+        <Pagination value={page} onChange={setPage} total={pages} pb="20" />
       </>
     );
   }
