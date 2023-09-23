@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -9,10 +9,9 @@ import Movie from "./pages/Movie";
 /**
  * The starting page for your App
  */
-
 const queryClient = new QueryClient({});
 
-class App extends Component {
+class App extends React.Component {
   render(): JSX.Element {
     return (
       <QueryClientProvider client={queryClient}>
