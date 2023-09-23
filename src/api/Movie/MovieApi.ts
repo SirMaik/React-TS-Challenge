@@ -59,6 +59,6 @@ export async function getMovie(id: number): Promise<Movie> {
   return movie;
 }
 
-async function getMovies(ids: number[]): Promise<any[]> {
+async function getMovies(ids: number[]): Promise<Movie[]> {
   return await Promise.all(ids.map(getMovie));
 }

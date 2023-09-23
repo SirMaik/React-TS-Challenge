@@ -13,7 +13,7 @@ import {
   Center
 } from "@mantine/core";
 
-export const Movie = (props: any): JSX.Element => {
+export const Movie = (): JSX.Element => {
   const params = useParams();
   const id = Number(params.id);
 
